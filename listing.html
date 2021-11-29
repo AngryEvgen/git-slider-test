@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <title>Slider</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="slider">
+            <div class="slider__line">
+                <img src="./img/photo_1.jpg" alt="">
+                <img src="./img/photo_2.jpg" alt="">
+                <img src="./img/photo_3.jpg" alt="">
+                <img src="./img/photo_4.jpg" alt="">
+                <img src="./img/photo_5.jpg" alt="">
+                <img src="./img/photo_6.jpg" alt="">
+            </div>
+            <img src="./img/arrow__left.jpg" alt="" class="slider__left">
+            <img src="./img/arrow__right.jpg" alt="" class="slider__right">
+        </div>
+    </div>
+    <script>
+        'use strict';
+        window.addEventListener('load', function() {
+            let slider = document.querySelector('.slider__line');
+            let slides = slider.querySelectorAll('img');
+    
+            let counter = 0;
+            let stepSize = slides[0].clientWidth;
+    
+            let right = document.querySelector('.slider__right');
+            right.addEventListener('click', function() {
+                counter++;
+    
+                if (counter >= slides.length) {
+                    counter = 0;
+                }
+    
+                slider.style.right = stepSize * counter + 'px';
+            });
+    
+            let left = document.querySelector('.slider__left');
+            left.addEventListener('click', function() {
+                counter--;
+    
+                if (counter <= 0) {
+                    counter = slides.length - 1;
+                }
+    
+                slider.style.right = stepSize * counter + 'px'
+            });
+        });
+    </script>
+</body>
+</html>
